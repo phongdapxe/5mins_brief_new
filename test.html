@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+        5MINS BRIEF - Tin Tức Thế Giới Trong 5 Phút
+    </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li class="li1"><a href="#">
+                        <span class="span1">BRIEF</span><span class="span2">5</span>
+                        <span class="span3">WORLD</span>
+                    </a></li>
+                <li class="li2">
+                    <span style="color: rgb(49, 47, 47);">|</span>
+                    <span id="current_date" style="margin-right: 10px;"></span>
+                    <span class="span1">⬤</span>
+                    <span class="span2">
+                        <label for="new_date">Lựa chọn bản tin📅</label>
+                        <input type="date" id="new_date">
+                    </span>
+                </li>
+                <li class="li3">
+                    <div class="timer">
+                        <div class="timer-left">
+                            <div class="progress-ring">
+                                <svg viewBox="0 0 36 36">
+                                    <path class="progress-bg"
+                                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                    <path id="progress-circle" class="progress-value" stroke-dasharray="100, 100"
+                                        stroke-dashoffset="0"
+                                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                </svg>
+                                <span class="timer-dot"></span>
+                            </div>
+                            <span id="time-remaining">5:00 còn lại</span>
+                        </div>
+                        <div class="timer-divider"></div>
+                        <div class="read-counter">
+                            <span id="read-count">0</span>/8 bản tin
+                        </div>
+                    </div>
+                </li>
+                <li class="li4" id="view-mode-toggle" title="Chuyển chế độ xem">
+                    <svg width="16" height="16" viewBox="0 0 210 210" style="margin-right: 7px;">
+                        <rect x="14" y="14" width="66" height="66" rx="16" fill="none" stroke="white"
+                            stroke-width="25" />
+                        <rect x="130" y="14" width="66" height="66" rx="16" fill="none" stroke="white"
+                            stroke-width="25" />
+                        <rect x="14" y="130" width="66" height="66" rx="16" fill="none" stroke="white"
+                            stroke-width="25" />
+                        <rect x="130" y="130" width="66" height="66" rx="16" fill="none" stroke="white"
+                            stroke-width="25" />
+                    </svg>
+
+                    <span class="span1">Chế độ lưới</span>
+                    <span class="span2">Chế độ thẻ</span>
+                </li>
+                <li class="li5">
+
+                </li>
+                <li class="li6" id="theme-toggle" title="Chuyển giao diện">
+                    <span class="span1">☼</span>
+                    <span class="span2">⏾</span>
+                </li>
+
+            </ul>
+        </nav>
+        <div class="scroll-progress-container">
+            <div class="scroll-progress-bar" id="progressBar"></div>
+        </div>
+    </header>
+
+    <main>
+        <section class="main-top">
+            <!-- cố định -->
+            <span class="span1">⬤ ĐƯỢC CHỌN LỌC BỞI AI & BIÊN TẬP VIÊN</span>
+            <p class="p1">5 phút. Không tiếng ồn.</p>
+            <p class="p2">Nắm trọn biến động thế giới.</p>
+            <p class="p3">Không thuật toán câu tương tác,
+                không quảng cáo giật gân.
+                8 bản tóm tắt đa chiều giúp bạn hiểu rõ nguyên nhân và tác động
+                toàn cầu trước khi bắt đầu ngày mới.</p>
+        </section>
+        <section class="main-content">
+            <!-- di chuyển theo li4 -->
+        </section>
+        <section class="main-bottom">
+            <!-- cố định -->
+        </section>
+    </main>
+    <footer>
+        <div class="footer-left">
+            <span class="footer-logo">BRIEF<span>5</span></span>
+            <span class="footer-divider">•</span>
+            <span class="span1">Triết lý Micro-Journalism: Tôn trọng thời gian & trí tuệ người đọc.</span>
+        </div>
+
+        <div class="footer-right">
+            <span class="span1">Đồ án thiết kế giao diện tin tức nhanh © 2026</span>
+        </div>
+    </footer>
+    <script src="main.js"></script>
+</body>
+
+</html>
