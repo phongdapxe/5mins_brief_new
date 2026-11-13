@@ -50,20 +50,71 @@ updateTimer();
 
 const timerInterval = setInterval(updateTimer, 1000);
 
-// li4 chuyển article
 const viewModeToggle = document.getElementById("view-mode-toggle");
 const s1 = viewModeToggle.querySelector(".span1");
 const s2 = viewModeToggle.querySelector(".span2");
 
+const mainContent = document.querySelector(".main-content");
+const cardViewer = document.getElementById("cardViewer");
+const cardProgressBars = document.getElementById("cardProgressBars");
+const cardBody = document.getElementById("cardBody");
+const prevCardBtn = document.getElementById("prevCardBtn");
+const nextCardBtn = document.getElementById("nextCardBtn");
+const cardStepIndicator = document.getElementById("cardStepIndicator");
+const posts = document.querySelectorAll(".main-content .post");
+
+let isCardMode = false;
+let currentCardIndex = 0;
+
 s2.style.display = "none";
 
+function renderCard(index) {
+    currentCardIndex = index;
+
+    cardProgressBars.innerHTML = "";
+    posts.forEach((_, i) => {
+        const bar = document.createElement("div");
+        bar.className = "card-progress-segment" + (i <= index ? " active" : "");
+        bar.addEventListener("click", () => renderCard(i));
+        cardProgressBars.appendChild(bar);
+    });
+
+    cardBody.innerHTML = posts[index].innerHTML;
+
+    cardStepIndicator.textContent = `Tin ${index + 1} / ${posts.length}`;
+    prevCardBtn.disabled = index === 0;
+    nextCardBtn.textContent = index === posts.length - 1 ? "Hoàn thành 🎉" : "Tiếp tục →";
+}
+
 viewModeToggle.addEventListener("click", function () {
-    if (s1.style.display === "none") {
-        s1.style.display = "inline";
-        s2.style.display = "none";
-    } else {
+    isCardMode = !isCardMode;
+
+    if (isCardMode) {
         s1.style.display = "none";
         s2.style.display = "inline";
+        mainContent.style.display = "none";
+        cardViewer.style.display = "block";
+        renderCard(0);
+    } else {
+        s1.style.display = "inline";
+        s2.style.display = "none";
+        mainContent.style.display = "grid";
+        cardViewer.style.display = "none";
+    }
+});
+
+prevCardBtn.addEventListener("click", function () {
+    if (currentCardIndex > 0) {
+        renderCard(currentCardIndex - 1);
+    }
+});
+
+nextCardBtn.addEventListener("click", function () {
+    if (currentCardIndex < posts.length - 1) {
+        renderCard(currentCardIndex + 1);
+    } else {
+        viewModeToggle.click();
+        document.querySelector(".main-bottom").scrollIntoView({ behavior: "smooth" });
     }
 });
 
@@ -78,6 +129,7 @@ window.addEventListener("scroll", function () {
         progressBar.style.width = scrollPercent + "%";
     }
 });
+
 // li6 chuyển màu
 const themeToggle = document.getElementById("theme-toggle");
 const themeSpan1 = themeToggle.querySelector(".span1");
